@@ -34,6 +34,6 @@ country = st.selectbox(
 if country:
     st.write(f"You selected: **{country}**")
     if "Belarus" in country or "Russia" in country or "DPRK" in country:
-        st.error("These countries are destroying Ukraine's independency. The user registration from that countries are not currently possible.")
+        st.error("These countries are destroying Ukraine's independency. The user registration from that countries is not currently possible.")
     else:
-        st.write("Choose country")
+        st.success("Thank you for choosing your country.")
