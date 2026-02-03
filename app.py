@@ -6,6 +6,8 @@ html, body, [class*="css"]  {
 }
 </style>
 """, unsafe_allow_html=True)
+if 'answer_result' not in st.session_state:
+    st.session_state.answer_result = None;
 if 'btn_disabled' not in st.session_state: 
     st.session_state.btn_disabled = False
 
@@ -47,10 +49,15 @@ if country:
             st.session_state.btn_disabled = True
             st.warning(f"Your answer is {question1}")
             if question1 == "Istanbul":
+                
                 st.success("Hooray! The answer is correct")
+                st.session_state.answer_result = "True"
             else:
                 st.error("The answer is incorrect")
-            if 'btn_disabled' not in st.session_state: 
-                st.session_state.btn_disabled = False
             st.rerun()
-            
+        elif st.session_state.answer_result == "True":
+            st.success("Hooray! The answer is correct")
+        elif question1_submit == True and question1 is not "Choose answer":
+            st.error("The answer is incorrect")
+        else:
+                st.warning("It is mandatory to choose an answer to this question")
