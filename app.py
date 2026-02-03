@@ -2,3 +2,6 @@ import streamlit as st
 st.write("This is a geography quiz. Let's see how good your skills are")
 st.write("I'd like humbly have you requested to enter your name here")
 name = st.text_input("Have your name stated here")
+gender = st.radio("Gender", ["Male", "Female", "Other", "Custom", "Prefer not to be shared"])
+if gender == "Custom":
+  gender_custom = st.text_input("Kindly have your gender stated here")
