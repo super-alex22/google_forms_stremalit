@@ -60,4 +60,4 @@ if country:
         elif question1_submit == True and question1 is not "Choose answer":
             st.error("The answer is incorrect")
         else:
-                st.warning("It is mandatory to choose an answer to this question")
+            st.warning("This question is mandatory if Your Mightiness would like to have proceeded")
