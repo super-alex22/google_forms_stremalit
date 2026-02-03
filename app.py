@@ -45,8 +45,7 @@ if country:
         question1_submit = st.form_submit_button("Submit", disabled=st.session_state.btn_disabled)
         if question1_submit == True:
             st.session_state.btn_disabled = True
-            
-            
+            st.warning(f"Your answer is {question1}")
             if question1 == "Istanbul":
                 st.success("Hooray! The answer is correct")
             else:
