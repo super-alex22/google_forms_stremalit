@@ -57,7 +57,8 @@ if country:
             st.rerun()
         elif st.session_state.answer_result == "True":
             st.success("Hooray! The answer is correct")
-        elif question1_submit == True and question1 is not "Choose answer":
+        elif (question1_submit == True and question1 is not "Choose answer") or question1 is "Rome" or question1 is "Cairo" or question1 is "Panama City":
+            st.session_state.answer_result = "True"
             st.error("The answer is incorrect")
         else:
             st.warning("This question is mandatory if Your Mightiness would like to have proceeded")
