@@ -1,4 +1,11 @@
 import streamlit as st
+st.markdown("""
+<style>
+html, body, [class*="css"]  {
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji", sans-serif;
+}
+</style>
+""", unsafe_allow_html=True)
 countries_with_flags = [
     "🇦🇫 Afghanistan", "🇦🇱 Albania", "🇩🇿 Algeria", "🇦🇩 Andorra", "🇦🇴 Angola",
     "🇦🇷 Argentina", "🇦🇲 Armenia", "🇦🇺 Australia", "🇦🇹 Austria", "🇦🇿 Azerbaijan",
