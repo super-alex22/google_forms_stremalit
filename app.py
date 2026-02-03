@@ -43,7 +43,7 @@ if country:
         st.write("Which city is the only one in the world to be located on two continents?")
         question1 = st.radio("City", ["Choose answer","Rome","Istanbul", "Cairo", "Panama City."])
         question1_submit = st.form_submit_button("Submit", disabled=st.session_state.btn_disabled)
-        if question1_submit == True:
+        if question1_submit == True and question1 is not "Choose answer":
             st.session_state.btn_disabled = True
             st.warning(f"Your answer is {question1}")
             if question1 == "Istanbul":
