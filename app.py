@@ -37,3 +37,9 @@ if country:
         st.error("These countries are destroying Ukraine's independency. The user registration from that countries is not currently possible.")
     else:
         st.success("Thank you for choosing your country.")
+        st.write("Which city is the only one in the world to be located on two continents?")
+        question1 = st.radio("City", ["Rome","Istanbul", "Cairo", "Panama City.""])
+        if question1 == "Istanbul":
+            st.success("Hooray! The answer is correct")
+        else:
+            st.error("The answer is incorrect")
