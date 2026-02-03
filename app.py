@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 st.markdown("""
 <style>
 html, body, [class*="css"]  {
@@ -47,9 +48,9 @@ if country:
         
     with st.form("quiz_form"):
         st.write("Which city is the only one in the world to be located on two continents?")
-        question1 = st.radio("City", ["Choose answer","Rome","Istanbul", "Cairo", "Panama City."])
+        question1 = st.radio("City", ["Choose answer","Rome","Istanbul", "Cairo", "Panama City"])
         question1_submit = st.form_submit_button("Submit", disabled=st.session_state.btn_disabled)
-        if question1_submit == True and question1 is not "Choose answer":
+        if question1_submit == True and question1 != "Choose answer":
             st.session_state.btn_disabled = True
             st.warning(f"Your answer is {question1}")
             if question1 == "Istanbul":
@@ -58,11 +59,12 @@ if country:
                 st.session_state.answer_result = "True"
             else:
                 st.error("The answer is incorrect")
-            st.rerun()
+                st.session_state.answer_result = "Incorrect"
         elif st.session_state.answer_result == "True":
             st.success("Hooray! The answer is correct")
-        elif (question1_submit == True and question1 is not "Choose answer") or question1 is "Rome" or question1 is "Cairo" or question1 is "Panama City":
-            st.session_state.answer_result = "True"
+        elif (question1_submit == True and question1 != "Choose answer") or (question1 == "Rome" and question1_submit == True) or (question1_submit == True and question1 == "Cairo") or (question1 == "Panama City" and question1_submit == True):
+            st.session_state.answer_result = "False"
             st.error("The answer is incorrect")
+            time.sleep(2)
         else:
             st.warning("This question is mandatory if Your Mightiness would like to have proceeded")
