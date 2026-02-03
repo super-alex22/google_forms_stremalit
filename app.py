@@ -67,5 +67,6 @@ if country:
             st.session_state.answer_result = "False"
             st.error("The answer is incorrect")
             time.sleep(2)
+            st.rerun()
         else:
             st.warning("This question is mandatory if Your Mightiness would like to have proceeded")
