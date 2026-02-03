@@ -63,6 +63,7 @@ if country:
         elif st.session_state.answer_result == "True":
             st.success("Hooray! The answer is correct")
         elif (question1_submit == True and question1 != "Choose answer") or (question1 == "Rome" and question1_submit == True) or (question1_submit == True and question1 == "Cairo") or (question1 == "Panama City" and question1_submit == True):
+            st.session_state.btn_disabled = True
             st.session_state.answer_result = "False"
             st.error("The answer is incorrect")
             time.sleep(2)
