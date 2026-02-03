@@ -5,3 +5,5 @@ name = st.text_input("Have your name stated here")
 gender = st.radio("Gender", ["Male", "Female", "Other", "Custom", "Prefer not to be shared"])
 if gender == "Custom":
   gender_custom = st.text_input("Kindly have your gender stated here")
+  st.write("Have me considered as")
+  gender_custom_type = st.radio("Gender", ["Male", "Female", "Other"])
