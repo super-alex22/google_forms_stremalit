@@ -10,3 +10,5 @@ if gender == "Custom":
 age = st.number_input("Kindly have your age stated here")
 if age<1:
   st.error("You haven't been born yet. See you back when you are")
+else:
+  st.success("Your Mightiness is old enough to have this quiz completed")
