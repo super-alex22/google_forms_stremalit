@@ -29,7 +29,7 @@ else:
 
 country = st.selectbox(
     "Select your country of residence:",
-    options=countries_full_list,
+    options=country,
     index=None,
     placeholder="Start typing (e.g. Iceland)..."
 )
