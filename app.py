@@ -7,3 +7,6 @@ if gender == "Custom":
   gender_custom = st.text_input("Kindly have your gender stated here")
   st.write("Have me considered as")
   gender_custom_type = st.radio("Gender", ["Male", "Female", "Other"])
+age = st.number_input("Kindly have your age stated here")
+if age<1:
+  st.error("You haven't been born yet. See you back when you are")
