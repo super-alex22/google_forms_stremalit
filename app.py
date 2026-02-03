@@ -48,7 +48,7 @@ if age<1:
   st.error("You haven't been born yet. See you back when you are")
 else:
   st.success("Your Mightiness is old enough to have this quiz completed")
-country = st.selectbox(""Select a country",
+country = st.selectbox("Select a country",
     options=countries_with_flags,
     index=None,
-    placeholder="Choose an option..."")
+    placeholder="Choose an option...")
