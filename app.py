@@ -62,6 +62,7 @@ if country:
                 st.session_state.answer_result = "Incorrect"
         elif st.session_state.answer_result == "True":
             st.success("Hooray! The answer is correct")
+            st.session_state.btn_disabled = True
         elif (question1_submit == True and question1 != "Choose answer") or (question1 == "Rome" and question1_submit == True) or (question1_submit == True and question1 == "Cairo") or (question1 == "Panama City" and question1_submit == True):
             st.session_state.btn_disabled = True
             st.session_state.answer_result = "False"
@@ -70,3 +71,8 @@ if country:
             st.rerun()
         else:
             st.warning("This question is mandatory if Your Mightiness would like to have proceeded")
+        st.write("How many countries (officially recognised members of the UN) are there in the world at present?")
+        question2 = st.slider("Countries amount", 150, 200, None, 1)
+        question2_submit = st.form_submit_button("Submit", disabled=st.session_state.btn_disabled)
+        if question2_submit == True and question2 == 193 or question2_submit == True and question2 == 195:
+            
