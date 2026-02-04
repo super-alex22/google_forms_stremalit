@@ -74,5 +74,4 @@ if country:
         st.write("How many countries (officially recognised members of the UN) are there in the world at present?")
         question2 = st.slider("Countries amount", 150, 200, None, 1)
         question2_submit = st.form_submit_button("Submit", disabled=st.session_state.btn_disabled)
-        if question2_submit == True and question2 == 193 or question2_submit == True and question2 == 195:
             
