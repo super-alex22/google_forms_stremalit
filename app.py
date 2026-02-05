@@ -142,4 +142,13 @@ if st.session_state.answer_result_q4 is not None:
                     st.session_state.answer_result_q5 = "Incorrect"
             else:
                 st.error("Enter a valid number")
-            
+
+if st.session_state.answer_result_q5 is not None:
+    with st.form("final_submit_form"):
+        st.write("All questions answered. Submit your quiz!")
+        final_submit = st.form_submit_button("Submit Quiz")
+
+        if final_submit:
+            st.balloons()
+            st.toast("Quiz finished! 🎉")
+
