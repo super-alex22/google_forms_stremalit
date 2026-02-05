@@ -7,15 +7,15 @@ html, body, [class*="css"]  {
 }
 </style>
 """, unsafe_allow_html=True)
-if 'answer_result' not in st.session_state:
-    st.session_state.answer_result = None;
-if 'btn_disabled' not in st.session_state: 
-    st.session_state.btn_disabled = False
-if st.session_state.answer_result == "True":
-    st.session_state.btn_disabled = True
-    st.success("Hooray! The answer is correct")
+if 'btn_disabled_q1' not in st.session_state: 
+    st.session_state.btn_disabled_q1 = False
 
-
+if 'btn_disabled_q2' not in st.session_state: 
+    st.session_state.btn_disabled_q2 = False
+if q1_answered != False or q1_answered!=True:
+    
+    q1_answered = False
+    q1_correct = False
 countries_list = ["🇦🇫 Afghanistan","🇦🇱 Albania","🇩🇿 Algeria","🇦🇩 Andorra","🇦🇴 Angola","🇦🇬 Antigua and Barbuda","🇦🇷 Argentina","🇦🇲 Armenia","🇦🇺 Australia","🇦🇹 Austria","🇦🇿 Azerbaijan","🇧🇸 Bahamas","🇧🇭 Bahrain","🇧🇩 Bangladesh","🇧🇧 Barbados","🇧🇾 Belarus","🇧🇪 Belgium","🇧🇿 Belize","🇧🇯 Benin","🇧🇹 Bhutan","🇧🇴 Bolivia","🇧🇦 Bosnia and Herzegovina","🇧🇼 Botswana","🇧🇷 Brazil","🇧🇳 Brunei","🇧🇬 Bulgaria","🇧🇫 Burkina Faso","🇧🇮 Burundi","🇨🇻 Cabo Verde","🇰🇭 Cambodia","🇨🇲 Cameroon","🇨🇦 Canada","🇨🇫 Central African Republic","🇹🇩 Chad","🇨🇱 Chile","🇨🇳 China","🇨🇴 Colombia","🇰🇲 Comoros","🇨🇬 Congo","🇨🇩 Congo (DRC)","🇨🇷 Costa Rica","🇨🇮 Côte d’Ivoire","🇭🇷 Croatia","🇨🇺 Cuba","🇨🇾 Cyprus","🇨🇿 Czech Republic","🇩🇰 Denmark","🇩🇯 Djibouti","🇩🇲 Dominica","🇩🇴 Dominican Republic","🇪🇨 Ecuador","🇪🇬 Egypt","🇸🇻 El Salvador","🇬🇶 Equatorial Guinea","🇪🇷 Eritrea","🇪🇪 Estonia","🇸🇿 Eswatini","🇪🇹 Ethiopia","🇫🇯 Fiji","🇫🇮 Finland","🇫🇷 France","🇬🇦 Gabon","🇬🇲 Gambia","🇬🇪 Georgia","🇩🇪 Germany","🇬🇭 Ghana","🇬🇷 Greece","🇬🇩 Grenada","🇬🇹 Guatemala","🇬🇳 Guinea","🇬🇼 Guinea-Bissau","🇬🇾 Guyana","🇭🇹 Haiti","🇭🇳 Honduras","🇭🇺 Hungary","🇮🇸 Iceland","🇮🇳 India","🇮🇩 Indonesia","🇮🇷 Iran","🇮🇶 Iraq","🇮🇪 Ireland","🇮🇱 Israel","🇮🇹 Italy","🇯🇲 Jamaica","🇯🇵 Japan","🇯🇴 Jordan","🇰🇿 Kazakhstan","🇰🇪 Kenya","🇰🇮 Kiribati","🇰🇼 Kuwait","🇰🇬 Kyrgyzstan","🇱🇦 Laos","🇱🇻 Latvia","🇱🇧 Lebanon","🇱🇸 Lesotho","🇱🇷 Liberia","🇱🇾 Libya","🇱🇮 Liechtenstein","🇱🇹 Lithuania","🇱🇺 Luxembourg","🇲🇬 Madagascar","🇲🇼 Malawi","🇲🇾 Malaysia","🇲🇻 Maldives","🇲🇱 Mali","🇲🇹 Malta","🇲🇭 Marshall Islands","🇲🇷 Mauritania","🇲🇺 Mauritius","🇲🇽 Mexico","🇫🇲 Micronesia","🇲🇩 Moldova","🇲🇨 Monaco","🇲🇳 Mongolia","🇲🇪 Montenegro","🇲🇦 Morocco","🇲🇿 Mozambique","🇲🇲 Myanmar","🇳🇦 Namibia","🇳🇷 Nauru","🇳🇵 Nepal","🇳🇱 Netherlands","🇳🇿 New Zealand","🇳🇮 Nicaragua","🇳🇪 Niger","🇳🇬 Nigeria","🇰🇵 Democratic People's Republic of Korea (DPRK)","🇲🇰 North Macedonia","🇳🇴 Norway","🇴🇲 Oman","🇵🇰 Pakistan","🇵🇼 Palau","🇵🇦 Panama","🇵🇬 Papua New Guinea","🇵🇾 Paraguay","🇵🇪 Peru","🇵🇭 Philippines","🇵🇱 Poland","🇵🇹 Portugal","🇶🇦 Qatar","🇷🇴 Romania","🇷🇺 Russia","🇷🇼 Rwanda","🇰🇳 Saint Kitts and Nevis","🇱🇨 Saint Lucia","🇻🇨 Saint Vincent and the Grenadines","🇼🇸 Samoa","🇸🇲 San Marino","🇸🇹 São Tomé and Príncipe","🇸🇦 Saudi Arabia","🇸🇳 Senegal","🇷🇸 Serbia","🇸🇨 Seychelles","🇸🇱 Sierra Leone","🇸🇬 Singapore","🇸🇰 Slovakia","🇸🇮 Slovenia","🇸🇧 Solomon Islands","🇸🇴 Somalia","🇿🇦 South Africa","🇰🇷 South Korea","🇸🇸 South Sudan","🇪🇸 Spain","🇱🇰 Sri Lanka","🇸🇩 Sudan","🇸🇷 Suriname","🇸🇪 Sweden","🇨🇭 Switzerland","🇸🇾 Syria","🇹🇯 Tajikistan","🇹🇿 Tanzania","🇹🇭 Thailand","🇹🇱 Timor-Leste","🇹🇬 Togo","🇹🇴 Tonga","🇹🇹 Trinidad and Tobago","🇹🇳 Tunisia","🇹🇷 Turkey","🇹🇲 Turkmenistan","🇹🇻 Tuvalu","🇺🇬 Uganda","🇺🇦 Ukraine","🇦🇪 United Arab Emirates","🇬🇧 United Kingdom","🇺🇸 United States","🇺🇾 Uruguay","🇺🇿 Uzbekistan","🇻🇺 Vanuatu","🇻🇦 Vatican City","🇻🇪 Venezuela","🇻🇳 Vietnam","🇾🇪 Yemen","🇿🇲 Zambia","🇿🇼 Zimbabwe","🇽🇰 Kosovo (частично признано)","🇹🇼 Taiwan (частично признано)","🇵🇸 Palestine (частично признано)","🇪🇭 Western Sahara (частично признано)"]
 
 st.write("This is a geography quiz. Let's see how good your skills are")
@@ -49,29 +49,27 @@ if country:
     with st.form("quiz_form"):
         st.write("Which city is the only one in the world to be located on two continents?")
         question1 = st.radio("City", ["Choose answer","Rome","Istanbul", "Cairo", "Panama City"])
-        question1_submit = st.form_submit_button("Submit", disabled=st.session_state.btn_disabled)
+        question1_submit = st.form_submit_button("Submit", disabled=st.session_state.btn_disabled_q1)
         if question1_submit == True and question1 != "Choose answer":
-            st.session_state.btn_disabled = True
+            st.session_state.btn_disabled_q1 = True
             st.warning(f"Your answer is {question1}")
             if question1 == "Istanbul":
                 
                 st.success("Hooray! The answer is correct")
-                st.session_state.answer_result = "True"
+                st.session_state.answer_result_q1 = "True"
             else:
                 st.error("The answer is incorrect")
-                st.session_state.answer_result = "Incorrect"
-        elif st.session_state.answer_result == "True":
+                st.session_state.answer_result_q1 = "Incorrect"
+        elif st.session_state.answer_result_q1 == "True":
             st.success("Hooray! The answer is correct")
-            st.session_state.btn_disabled = True
-        elif (question1_submit == True and question1 != "Choose answer") or (question1 == "Rome" and question1_submit == True) or (question1_submit == True and question1 == "Cairo") or (question1 == "Panama City" and question1_submit == True):
-            st.session_state.btn_disabled = True
-            st.session_state.answer_result = "False"
-            st.error("The answer is incorrect")
-            time.sleep(2)
-            st.rerun()
+            st.session_state.btn_disabled_q1 = True
         else:
             st.warning("This question is mandatory if Your Mightiness would like to have proceeded")
+        if st.session_state.btn_disabled_q1 == True and st.session_state.answer_result_q1 == "False":
+            st.error("The answer is incorrect") 
+        elif st.session_state.btn_disabled_q1 == True and st.session_state.answer_result_q1 == "True":
+            st.success("The answer is correct") 
         st.write("How many countries (officially recognised members of the UN) are there in the world at present?")
         question2 = st.slider("Countries amount", 150, 200, None, 1)
-        question2_submit = st.form_submit_button("Submit", disabled=st.session_state.btn_disabled)
+        question2_submit = st.form_submit_button("Submit", disabled=st.session_state.btn_disabled_q2)
             
