@@ -74,13 +74,16 @@ if country:
             st.warning(f"Your answer is {question1}")
             if question1 == "Istanbul":
                 
-                st.success("Hooray! The answer is correct")
                 st.session_state.answer_result = "True"
             else:
-                st.error("The answer is incorrect")
                 st.session_state.answer_result = "Incorrect"
+            st.rerun()
         else:
             st.warning("This question is mandatory if Your Mightiness would like to have proceeded")
+if st.session_state.answer_result == "True":
+    st.success("Hooray! The answer is correct")
+elif st.session_state.answer_result == "Incorrect":
+    st.error("The answer is incorrect")
 
 if st.session_state.answer_result == "True" or st.session_state.answer_result == "Incorrect":
     with st.form("quiz_form_2"):
@@ -91,11 +94,15 @@ if st.session_state.answer_result == "True" or st.session_state.answer_result ==
             st.session_state.btn_disabled_q2 = True
             st.warning(f"Your answer is {question2}")
             if question2 == 193:
-                st.success("Hooray! The answer is correct")
                 st.session_state.answer_result_q2 = "True"
             else:
-                st.error("The answer is incorrect")
                 st.session_state.answer_result_q2 = "Incorrect"
+            st.rerun()
+if st.session_state.answer_result_q2 == "True":
+    st.success("Hooray! The answer is correct")
+elif st.session_state.answer_result_q2 == "Incorrect":
+    st.error("The answer is incorrect")
+
 if st.session_state.answer_result_q2 is not None:
     with st.form("quiz_form_3"):
         st.write("Which of these countries do NOT have access to the sea?")
@@ -105,11 +112,14 @@ if st.session_state.answer_result_q2 is not None:
             st.session_state.btn_disabled_q3 = True
             st.warning(f"Your answer is {question3}")
             if "Switzerland" in question3 and "Mongolia" in question3 and "Hungary" in question3 and "Portugal" not in question3:
-                st.success("Hooray! The answer is correct")
                 st.session_state.answer_result_q3 = "True"
             else:
-                st.error("The answer is incorrect")
                 st.session_state.answer_result_q3 = "Incorrect"
+            st.rerun()
+if st.session_state.answer_result_q3 == "True":
+    st.success("Hooray! The answer is correct")
+elif st.session_state.answer_result_q3 == "Incorrect":
+    st.error("The answer is incorrect")
 if st.session_state.answer_result_q3 is not None:
      with st.form("quiz_form_4"):
         st.write("Select the typical temperature range in the Sahara Desert during the day (°C)")
@@ -125,11 +135,14 @@ if st.session_state.answer_result_q3 is not None:
             min_value = question4[0]
             max_value = question4[1]
             if (min_value>=30 and max_value>=50 and max_value<65):
-                st.success("Hooray! The answer is correct")
                 st.session_state.answer_result_q4 = "True"
             else:
-                st.error("The answer is incorrect")
                 st.session_state.answer_result_q4 = "Incorrect"
+            st.rerun()
+if st.session_state.answer_result_q4 == "True":
+    st.success("Hooray! The answer is correct")
+elif st.session_state.answer_result_q4 == "Incorrect":
+    st.error("The answer is incorrect")
 if st.session_state.answer_result_q4 is not None:
      with st.form("quiz_form_5"):
         st.write("What is the height of Mount Everest in meters?")
@@ -140,14 +153,17 @@ if st.session_state.answer_result_q4 is not None:
                 st.session_state.btn_disabled_q5 = True
                 st.warning(f"Your answer is {question5}")
                 if question5>8800 and question5<8900:
-                    st.success("Hooray! The answer is correct")
                     st.session_state.answer_result_q5 = "True"
                 else:
-                    st.error("The answer is incorrect")
                     st.session_state.answer_result_q5 = "Incorrect"
             else:
                 st.error("Enter a valid number")
+            st.rerun()
 
+if st.session_state.answer_result_q5 == "True":
+    st.success("Hooray! The answer is correct")
+elif st.session_state.answer_result_q5 == "Incorrect":
+    st.error("The answer is incorrect")
 if st.session_state.answer_result_q5 is not None:
     with st.form("final_submit_form"):
         st.write("All questions answered. Submit your quiz!")
