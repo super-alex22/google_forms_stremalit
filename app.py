@@ -167,10 +167,11 @@ elif st.session_state.answer_result_q5 == "Incorrect":
 if st.session_state.answer_result_q5 is not None:
     with st.form("final_submit_form"):
         st.write("All questions answered. Submit your quiz!")
-        final_submit = st.form_submit_button("Submit Quiz")
-
+        final_submit = st.form_submit_button("Submit Quiz", disabled=st.session_state.final_btn_disabled)
         if final_submit:
+            st.session_state.final_btn_disabled = True
             st.session_state.quiz_finished = True
+            st.rerun()
 if st.session_state.quiz_finished:
     st.balloons()
     st.session_state.counter = 0
